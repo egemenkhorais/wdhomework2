@@ -1,0 +1,15 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+.business-card {
+  background: #2c3e50;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+#my-card h2 { color: #3498db; margin-bottom: 5px; }

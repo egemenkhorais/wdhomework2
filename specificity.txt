@@ -1,4 +1,14 @@
-Question: Calculate the specificity of the following selectors:
-1. #main-container p.text -> 0,1,1,1 (1 ID, 1 Class, 1 Element)
-2. div.container #target-text -> 0,1,1,1 (1 ID, 1 Class, 1 Element)
-3. p -> 0,0,0,1 (1 Element)
+Answer 1
+Paragraph A: It only gets styling from the element selector (p). The applied properties are color, font-size, font-family, line-height, and padding.
+Paragraph B: This gets rules from both the p tag and the .info class. Since classes beat element selectors in specificity, .info takes over the color, font-size, font-family, and padding. It just keeps the line-height from the p tag and adds the background-color and border from the class.
+Paragraph C: This one is styled by p and the #warning ID. Because IDs have very high specificity, #warning completely overwrites the color, font-size, font-family, and padding. It also brings in new properties like font-style, border, and background-color. Again, line-height stays from the p tag.
+Paragraph D: This paragraph is targeted by p, .info, #warning, and the combined #warning.info. The combined selector (#warning.info) is the strongest one here, so it decides the color, background, border, font-size, and font-style. It inherits things like font-family and padding from #warning (since ID beats class), and finally gets line-height from p.
+
+Answer 2
+Color: The text becomes "darkorange". This is because #warning.info has the highest specificity score (0,1,1,0), which easily beats #warning (0,1,0,0), .info (0,0,1,0), and p (0,0,0,1).
+Font-Family: It uses "'Courier New', monospace". Even though #warning.info is the strongest selector, it doesn't actually specify a font-family. So, the browser falls back to the next strongest selector that does have a font-family, which is the #warning ID.
+
+Answer 3
+When we put an h1 style in the external "style.css" and another one in the internal <style> tag, they conflict because they both target h1.
+What happens: The text takes the color from the internal <style> tag (like purple).
+Why: This is the CSS "Cascade" in action. Both rules have the exact same specificity score of (0,0,0,1). When there's a tie, CSS uses whatever rule is written last in the document. Since the internal <style> block comes after the external <link> tag in the HTML, the internal rule wins.
